@@ -24,6 +24,8 @@ int main() {
 
     char recommencer;
 
+    cout << "\nCe programme affiche tous les nombres premiers compris entre 1 et une limite indiquée par l'utilisateur.\n";
+
     // boucle principale du programme
     do {
 
@@ -31,13 +33,13 @@ int main() {
 
         // saisie utilisateur valide entre 2 et 1000
         do {
-            cout<<"entrer une valeur [2-1000] : "<<endl;
+            cout<<"entrer une valeur [2-1000] : ";
             cin>>limite;
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // vidage du buffer après saisie
         }while(limite < 2 || limite > 1000);
 
 
-        cout << "Voici la liste des nombres premiers"<<endl;
+        cout << "\nVoici la liste des nombres premiers"<<endl;
 
         int nbAffiche = 0;
 
@@ -50,6 +52,7 @@ int main() {
             for (int d = 2; d < i; d++) {
                 if (i % d == 0) {
                     premier = false; // si reste division = 0 diviseur trouvé et pas premier
+                    break; // sort de la boucle vu qu'il n'y a plus besoin de chercher
                 }
             }
 
@@ -63,6 +66,9 @@ int main() {
                 }
             }
         }
+        if (nbAffiche % n_col != 0) {
+            cout << "\n" ;
+        }
 
 
         // Boucle pour recommencer le programme ou non
@@ -74,7 +80,7 @@ int main() {
         }while(recommencer != 'O' && recommencer != 'N');
     }while(recommencer == 'O');
 
-    cout << "Fin de programme" << endl;
+    cout << "\nFin de programme" << endl;
 
     return 0;
 }
